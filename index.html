@@ -41,7 +41,7 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         /* Styles for the separate pages */
-        .legal-page {
+        .page {
             display: none; /* Hidden by default */
         }
         .modal {
@@ -80,7 +80,7 @@
 <body class="text-gray-800">
 
     <!-- This div holds the main landing page content -->
-    <div id="main-content">
+    <div id="main-content" class="page">
         <!-- Header -->
         <header class="bg-white shadow-md sticky top-0 z-40">
             <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -200,8 +200,8 @@
                 <div class="border-t border-gray-700 pt-8">
                     <p class="text-gray-500">&copy; 2024 Flowcent. All rights reserved.</p>
                     <div class="mt-4 space-x-6">
-                        <a href="#privacy" class="text-gray-400 hover:text-white">Privacy Policy</a>
-                        <a href="#terms" class="text-gray-400 hover:text-white">Terms & Conditions</a>
+                        <a href="/privacy" class="route-link text-gray-400 hover:text-white">Privacy Policy</a>
+                        <a href="/terms" class="route-link text-gray-400 hover:text-white">Terms & Conditions</a>
                     </div>
                 </div>
             </div>
@@ -209,8 +209,8 @@
     </div>
 
     <!-- Privacy Policy Page -->
-    <div id="privacy-page" class="legal-page">
-        <header class="bg-white shadow-md sticky top-0 z-40"><nav class="container mx-auto px-6 py-4 flex justify-between items-center"><h1 class="text-2xl font-bold text-gray-900">Flowcent</h1><a href="#" class="text-indigo-600 font-semibold hover:underline">Back to Home</a></nav></header>
+    <div id="privacy-page" class="page">
+        <header class="bg-white shadow-md sticky top-0 z-40"><nav class="container mx-auto px-6 py-4 flex justify-between items-center"><h1 class="text-2xl font-bold text-gray-900">Flowcent</h1><a href="/" class="route-link text-indigo-600 font-semibold hover:underline">Back to Home</a></nav></header>
         <main class="container mx-auto px-6 py-12">
             <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow">
                 <h2 class="text-3xl font-bold mb-6">Privacy Policy</h2>
@@ -228,7 +228,7 @@
                     <p><strong>Data Security:</strong> We follow industry best practices for data security to prevent loss, misuse, and unauthorized access to your information. While no method of transmission over the Internet or electronic storage is 100% secure, we strive to use commercially acceptable means to protect your Personal Data.</p>
                     <h3 class="text-xl font-semibold mt-6 pt-4 border-t">Your Data Rights & Deletion</h3>
                     <p>You have the right to request the deletion of your account and associated data. You can initiate this process through the link below.</p>
-                    <a href="#delete-request" class="bg-red-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-red-700 transition duration-300 inline-block mt-4">Request Account Deletion</a>
+                    <a href="/delete-request" class="route-link bg-red-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-red-700 transition duration-300 inline-block mt-4">Request Account Deletion</a>
                     <h3 class="text-xl font-semibold mt-6 pt-4 border-t">Changes to This Privacy Policy</h3>
                     <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.</p>
                 </div>
@@ -237,8 +237,8 @@
     </div>
 
     <!-- Terms & Conditions Page -->
-    <div id="terms-page" class="legal-page">
-        <header class="bg-white shadow-md sticky top-0 z-40"><nav class="container mx-auto px-6 py-4 flex justify-between items-center"><h1 class="text-2xl font-bold text-gray-900">Flowcent</h1><a href="#" class="text-indigo-600 font-semibold hover:underline">Back to Home</a></nav></header>
+    <div id="terms-page" class="page">
+        <header class="bg-white shadow-md sticky top-0 z-40"><nav class="container mx-auto px-6 py-4 flex justify-between items-center"><h1 class="text-2xl font-bold text-gray-900">Flowcent</h1><a href="/" class="route-link text-indigo-600 font-semibold hover:underline">Back to Home</a></nav></header>
         <main class="container mx-auto px-6 py-12">
             <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow">
                 <h2 class="text-3xl font-bold mb-6">Terms & Conditions</h2>
@@ -261,8 +261,8 @@
     </div>
 
     <!-- Account Deletion Request Page -->
-    <div id="delete-request-page" class="legal-page">
-        <header class="bg-white shadow-md sticky top-0 z-40"><nav class="container mx-auto px-6 py-4 flex justify-between items-center"><h1 class="text-2xl font-bold text-gray-900">Flowcent</h1><a href="#" class="text-indigo-600 font-semibold hover:underline">Back to Home</a></nav></header>
+    <div id="delete-request-page" class="page">
+        <header class="bg-white shadow-md sticky top-0 z-40"><nav class="container mx-auto px-6 py-4 flex justify-between items-center"><h1 class="text-2xl font-bold text-gray-900">Flowcent</h1><a href="/" class="route-link text-indigo-600 font-semibold hover:underline">Back to Home</a></nav></header>
         <main class="container mx-auto px-6 py-12">
             <div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow">
                 <h2 class="text-3xl font-bold mb-2">Request Account Deletion</h2>
@@ -311,10 +311,8 @@
 
     <script>
         // Page routing functionality
-        const mainContent = document.getElementById('main-content');
-        const privacyPage = document.getElementById('privacy-page');
-        const termsPage = document.getElementById('terms-page');
-        const deleteRequestPage = document.getElementById('delete-request-page');
+        const pages = document.querySelectorAll('.page');
+        const routeLinks = document.querySelectorAll('.route-link');
         
         // Modal functionality
         const confirmationModal = document.getElementById('confirmation-modal');
@@ -323,35 +321,45 @@
         const deleteForm = document.getElementById('delete-form');
 
         function handleRouteChange() {
-            // Hide all pages first
-            mainContent.style.display = 'none';
-            privacyPage.style.display = 'none';
-            termsPage.style.display = 'none';
-            deleteRequestPage.style.display = 'none';
+            const path = window.location.pathname;
+            
+            // Hide all pages
+            pages.forEach(page => page.style.display = 'none');
 
-            // Show the correct page based on the URL hash
-            switch(window.location.hash) {
-                case '#privacy':
-                    privacyPage.style.display = 'block';
+            // Show the correct page based on the URL path
+            switch(path) {
+                case '/privacy':
+                    document.getElementById('privacy-page').style.display = 'block';
                     break;
-                case '#terms':
-                    termsPage.style.display = 'block';
+                case '/terms':
+                    document.getElementById('terms-page').style.display = 'block';
                     break;
-                case '#delete-request':
-                    deleteRequestPage.style.display = 'block';
+                case '/delete-request':
+                    document.getElementById('delete-request-page').style.display = 'block';
                     break;
                 default:
-                    mainContent.style.display = 'block';
+                    document.getElementById('main-content').style.display = 'block';
                     break;
             }
             window.scrollTo(0, 0); // Scroll to top on page change
         }
 
-        // Listen for hash changes to switch pages
-        window.addEventListener('hashchange', handleRouteChange);
+        // Navigate function to handle link clicks
+        function navigate(event) {
+            event.preventDefault();
+            const href = event.currentTarget.getAttribute('href');
+            history.pushState({}, '', href);
+            handleRouteChange();
+        }
+
+        // Add click listeners to all route links
+        routeLinks.forEach(link => link.addEventListener('click', navigate));
+
+        // Listen for browser back/forward navigation
+        window.addEventListener('popstate', handleRouteChange);
 
         // Handle initial page load
-        window.addEventListener('load', handleRouteChange);
+        document.addEventListener('DOMContentLoaded', handleRouteChange);
 
         // Handle form submission
         deleteForm.addEventListener('submit', function(event) {
